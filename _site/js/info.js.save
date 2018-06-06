@@ -1,0 +1,10 @@
+console.log("as");
+$.getJSON( "/test.json", function(data) {
+  var items = [];
+  $.each( data, function( key, val ) {
+    items.push(val);
+    console.log(val);
+  });
+});
+
+

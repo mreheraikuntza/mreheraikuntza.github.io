@@ -1,0 +1,50 @@
+---
+layout: default
+---
+
+<div id="main" role="main">
+	<article class="wrap" itemscope itemtype="http://schema.org/Article">
+		{% if page.image.feature %}
+		<div class="page-feature">
+			<div class="page-image">
+				<img src="{{ site.url }}/images/{{ page.image.feature }}" class="page-feature-image" alt="{{ page.title }}" itemprop="image">
+				{% if page.image.credit %}{% include image-credit.html %}{% endif %}
+			</div><!-- /.page-image -->
+		</div><!-- /.page-feature -->
+		{% endif %}
+		{% include breadcrumbs.html %}
+		<div class="page-title">
+			<h1>{{ page.title }}</h1>
+		</div>
+		<div class="inner-wrap">
+			<div id="content" class="page-content" itemprop="articleBody">
+				{{ content }}
+				{% if page.video.path %}
+				<video id="my-video" class="video-js" controls preload="auto" width="1000" height="600" data-setup="{}">
+					<source src="{{ page.video.path }}" type="video/mp4">
+        </video>
+				{% elsif page.video.title %}
+				<video id="my-video" class="video-js vjs-default-skin" controls preload="auto" width="1000" height="600" poster="{{ site.url }}/images/no-video.jpg" data-setup="{}">
+				   <source src="{{ site.url }}/videos/{{ page.video.title }}" type="video/mp4">
+				</video>
+				{% elsif page.video.vimeo %}
+				<iframe src="{{ page.video.vimeo }}?title=0&byline=0&portrait=0" width="1000" height="600" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+				</iframe>
+				{% elsif page.video.youtube %}
+				<video id="my-video" class="video-js vjs-default-skin" controls preload="auto" width="1000" height="600" data-setup="{}">
+					 <source src="{{ site.url }}/videos/{{ page.video.title }}" type="video/mp4">
+				</video>
+				{% endif %}
+				<hr />
+				<footer class="page-footer">
+					{% if page.share != false %}{% include share-this.html %}{% endif %}
+					{% include page-meta.html %}
+				</footer><!-- /.footer -->
+				<aside>
+					{% if page.comments == true %}{% include comments.html %}{% endif %}
+				</aside>
+			</div><!-- /.content -->
+		</div><!-- /.inner-wrap -->
+		{% if page.ads == true %}<div class="ads">{% include advertising.html %}</div><!-- /.ads -->{% endif %}
+	</article><!-- /.wrap -->
+</div><!-- /#main -->
