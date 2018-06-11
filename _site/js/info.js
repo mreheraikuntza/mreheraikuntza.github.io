@@ -9,7 +9,7 @@ $(document).ready(function() {
 });
 
 function loadData(){
-  $.getJSON( "/test.json", function(ardu) {
+  $.getJSON( "/data.json", function(ardu) {
   var idIndex = 1;
   var sensorIndex = 1;
 
@@ -22,8 +22,8 @@ function loadData(){
      $.each(val, function(key, val){
         if(sensorIndex == 1){
           $(".info").find("tr").eq(0).append("<th style='text-align:center;'>"+key+"</th>");
-	  dataForGraph[dataIndex++] = val.values;
-	}
+          dataForGraph[dataIndex++] = val.values;
+        }
 
         if(key != "location"){
          data = val.values[val.values.length-1];
@@ -57,8 +57,6 @@ function loadData(){
 function loadGraph(tableCell){
   selectedIndex = tableCell.abbr;
   selected = true;
-  var data = dataForGraph[tableCell.abbr-1];
-  data = data.slice(Math.max(data.length - 15,1));
   var chart = AmCharts.makeChart("chartdiv", {
       "type": "serial",
       "theme": "light",
@@ -127,7 +125,7 @@ function loadGraph(tableCell){
       },
       "categoryField": "timestamp",
       "categoryAxis": {
-          "minPeriod": "hh",
+          "minPeriod": "DD",
           "parseDates": true,
           "dashLength": 1,
           "minorGridEnabled": true
@@ -135,8 +133,8 @@ function loadGraph(tableCell){
       "export": {
           "enabled": true
       },
-      "dataProvider": data
- });
+      "dataProvider": dataForGraph[tableCell.abbr-1]
+  });
 }
 
 function onMouse(tableCell, out){

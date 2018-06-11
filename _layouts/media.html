@@ -31,9 +31,7 @@ layout: default
 				<iframe src="{{ page.video.vimeo }}?title=0&byline=0&portrait=0" width="1000" height="600" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
 				</iframe>
 				{% elsif page.video.youtube %}
-				<video id="my-video" class="video-js vjs-default-skin" controls preload="auto" width="1000" height="600" data-setup="{}">
-					 <source src="{{ site.url }}/videos/{{ page.video.title }}" type="video/mp4">
-				</video>
+				<iframe width="1000" height="600" src="{{ page.video.youtube }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 				{% endif %}
 				<hr />
 				<footer class="page-footer">

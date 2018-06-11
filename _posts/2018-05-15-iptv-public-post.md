@@ -9,9 +9,10 @@ image:
   feature: lqsa-1600x800.jpg
   teaser: lqsa-400x250.jpg
 video:
+  youtube: https://www.youtube.com/embed/p1TEb1zx5LE
+
 ---
 
 Atal honetan IPTV batzorde kanala aurkituko duzu
 
 ### IPTV batzorde kanala
-
